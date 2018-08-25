@@ -1,11 +1,14 @@
 package lottogenerator;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class ViewController implements Initializable {
 
@@ -16,6 +19,11 @@ public class ViewController implements Initializable {
     private int genNumber3;
     private int genNumber4;
     private int genNumber5;
+    private int selNumber1;
+    private int selNumber2;
+    private int selNumber3;
+    private int selNumber4;
+    private int selNumber5;
 
     @FXML
     private Label label1;
@@ -27,11 +35,24 @@ public class ViewController implements Initializable {
     private Label label4;
     @FXML
     private Label label5;
+    @FXML
+    private TextField input1;
+    @FXML
+    private TextField input2;
+    @FXML
+    private TextField input3;
+    @FXML
+    private TextField input4;
+    @FXML
+    private TextField input5;
+    @FXML
+    private Label resultLabel;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
-
+        resultLabel.setText("");
         generateNumbers();
+        checkNumbers();
     }
 
     private void generateNumbers() {
@@ -55,6 +76,43 @@ public class ViewController implements Initializable {
         label3.setText(String.valueOf(genNumber3));
         label4.setText(String.valueOf(genNumber4));
         label5.setText(String.valueOf(genNumber5));
+    }
+
+    private void checkNumbers() {
+
+        //Are they numbers? 
+        try {
+            selNumber1 = Integer.parseInt(input1.getText());
+            selNumber2 = Integer.parseInt(input2.getText());
+            selNumber3 = Integer.parseInt(input3.getText());
+            selNumber4 = Integer.parseInt(input4.getText());
+            selNumber5 = Integer.parseInt(input5.getText());
+        } catch (Exception e) {
+            resultLabel.setText("Nem jó számot adtál meg!");
+            return;
+        }
+
+        //Are they unique? 
+        HashSet<Integer> selectedNumbers = new HashSet<>();
+        selectedNumbers.add(selNumber1);
+        selectedNumbers.add(selNumber2);
+        selectedNumbers.add(selNumber3);
+        selectedNumbers.add(selNumber4);
+        selectedNumbers.add(selNumber5);
+        if (selectedNumbers.size() < 5) {
+            resultLabel.setText("A számoknak különbözőnek kell lenniük!");
+            return;
+        }
+
+        ArrayList<Integer> userNumbers = new ArrayList<>(selectedNumbers);
+
+        //Are they between 1-99? 
+        for (Integer number : userNumbers) {
+            if (number < MIN || number > MAX) {
+                resultLabel.setText("Minden számnak 1 és 99 között kell lennie!");
+                return;
+            }
+        }
     }
 
     private int getRandomNumber() {
