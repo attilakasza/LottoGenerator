@@ -113,8 +113,33 @@ public class ViewController implements Initializable {
                 return;
             }
         }
+        
+        checkResult(userNumbers);
     }
 
+    private void checkResult(ArrayList<Integer> userNumbers){
+        int result = 0;
+        for(int i=0;i<userNumbers.size();i++){
+            if(userNumbers.get(i) == genNumber1 || userNumbers.get(i) == genNumber2 || userNumbers.get(i) == genNumber3 || userNumbers.get(i) == genNumber4 || userNumbers.get(i) == genNumber5)
+                result++;
+        } 
+         
+        switch(result){
+            case 0 : resultLabel.setText("Sajnos nem nyertél semmit.");
+                    break; 
+            case 1 : resultLabel.setText("Egyesed van a lottón.");
+                    break; 
+            case 2 : resultLabel.setText("Kettesed van a lottón.");
+                    break; 
+            case 3 : resultLabel.setText("Hármasod van a lottón.");
+                    break; 
+            case 4 : resultLabel.setText("Négyesed van a lottón.");
+                    break; 
+            case 5 : resultLabel.setText("ÖTÖSÖD VAN! Gratulálok!");
+                    break; 
+        } 
+    }
+    
     private int getRandomNumber() {
         int random = (int) (Math.random() * MAX) + MIN;
 
