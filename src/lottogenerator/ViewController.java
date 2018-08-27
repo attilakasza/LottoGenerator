@@ -7,8 +7,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 public class ViewController implements Initializable {
 
@@ -47,10 +49,23 @@ public class ViewController implements Initializable {
     private TextField input5;
     @FXML
     private Label resultLabel;
+    @FXML
+    private Pane basePane;
+    @FXML
+    private Pane alertPane;
+    @FXML
+    private Label alertText;
+
+    @FXML
+    private void handleAlertButton(ActionEvent event) {
+        basePane.setDisable(false);
+        basePane.setOpacity(1);
+        alertPane.setVisible(false);
+        alertText.setText("");
+    }
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        resultLabel.setText("");
         generateNumbers();
         checkNumbers();
     }
@@ -88,7 +103,7 @@ public class ViewController implements Initializable {
             selNumber4 = Integer.parseInt(input4.getText());
             selNumber5 = Integer.parseInt(input5.getText());
         } catch (Exception e) {
-            resultLabel.setText("Nem jó számot adtál meg!");
+            alert("Nem jó számot adtál meg!");
             return;
         }
 
@@ -100,7 +115,7 @@ public class ViewController implements Initializable {
         selectedNumbers.add(selNumber4);
         selectedNumbers.add(selNumber5);
         if (selectedNumbers.size() < 5) {
-            resultLabel.setText("A számoknak különbözőnek kell lenniük!");
+            alert("A számoknak különbözőnek kell lenniük!");
             return;
         }
 
@@ -109,37 +124,44 @@ public class ViewController implements Initializable {
         //Are they between 1-99? 
         for (Integer number : userNumbers) {
             if (number < MIN || number > MAX) {
-                resultLabel.setText("Minden számnak 1 és 99 között kell lennie!");
+                alert("Minden számnak 1 és 99 között kell lennie!");
                 return;
             }
         }
-        
+
         checkResult(userNumbers);
     }
 
-    private void checkResult(ArrayList<Integer> userNumbers){
+    private void checkResult(ArrayList<Integer> userNumbers) {
         int result = 0;
-        for(int i=0;i<userNumbers.size();i++){
-            if(userNumbers.get(i) == genNumber1 || userNumbers.get(i) == genNumber2 || userNumbers.get(i) == genNumber3 || userNumbers.get(i) == genNumber4 || userNumbers.get(i) == genNumber5)
+        for (int i = 0; i < userNumbers.size(); i++) {
+            if (userNumbers.get(i) == genNumber1 || userNumbers.get(i) == genNumber2 || userNumbers.get(i) == genNumber3 || userNumbers.get(i) == genNumber4 || userNumbers.get(i) == genNumber5) {
                 result++;
-        } 
-         
-        switch(result){
-            case 0 : resultLabel.setText("Sajnos nem nyertél semmit.");
-                    break; 
-            case 1 : resultLabel.setText("Egyesed van a lottón.");
-                    break; 
-            case 2 : resultLabel.setText("Kettesed van a lottón.");
-                    break; 
-            case 3 : resultLabel.setText("Hármasod van a lottón.");
-                    break; 
-            case 4 : resultLabel.setText("Négyesed van a lottón.");
-                    break; 
-            case 5 : resultLabel.setText("ÖTÖSÖD VAN! Gratulálok!");
-                    break; 
-        } 
+            }
+        }
+
+        switch (result) {
+            case 0:
+                resultLabel.setText("Sajnos nem nyertél semmit.");
+                break;
+            case 1:
+                resultLabel.setText("Egyesed van a lottón.");
+                break;
+            case 2:
+                resultLabel.setText("Kettesed van a lottón.");
+                break;
+            case 3:
+                resultLabel.setText("Hármasod van a lottón.");
+                break;
+            case 4:
+                resultLabel.setText("Négyesed van a lottón.");
+                break;
+            case 5:
+                resultLabel.setText("ÖTÖSÖD VAN! Gratulálok!");
+                break;
+        }
     }
-    
+
     private int getRandomNumber() {
         int random = (int) (Math.random() * MAX) + MIN;
 
@@ -148,6 +170,13 @@ public class ViewController implements Initializable {
         }
 
         return random;
+    }
+
+    private void alert(String text) {
+        basePane.setDisable(true);
+        basePane.setOpacity(0.3);
+        alertPane.setVisible(true);
+        alertText.setText(text);
     }
 
     @Override
