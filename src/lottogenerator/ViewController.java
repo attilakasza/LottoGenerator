@@ -7,10 +7,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public class ViewController implements Initializable {
 
@@ -55,7 +57,11 @@ public class ViewController implements Initializable {
     private Pane alertPane;
     @FXML
     private Label alertText;
-
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private Text numbers;
+    
     @FXML
     private void handleAlertButton(ActionEvent event) {
         basePane.setDisable(false);
@@ -86,11 +92,12 @@ public class ViewController implements Initializable {
         genNumber5 = getRandomNumber();
 
         //We are setting the generated numbers to the labels 
-        label1.setText(String.valueOf(genNumber1));
-        label2.setText(String.valueOf(genNumber2));
-        label3.setText(String.valueOf(genNumber3));
-        label4.setText(String.valueOf(genNumber4));
+        label1.setText(String.valueOf(genNumber1) + ",");
+        label2.setText(String.valueOf(genNumber2) + ",");
+        label3.setText(String.valueOf(genNumber3) + ",");
+        label4.setText(String.valueOf(genNumber4) + ",");
         label5.setText(String.valueOf(genNumber5));
+        numbers.setVisible(true);
     }
 
     private void checkNumbers() {
@@ -139,7 +146,7 @@ public class ViewController implements Initializable {
                 result++;
             }
         }
-
+        
         switch (result) {
             case 0:
                 resultLabel.setText("Sajnos nem nyertél semmit.");
@@ -181,7 +188,8 @@ public class ViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image image = new Image("/icons/lottery.png");
+        imageView.setImage(image);
     }
 
 }
