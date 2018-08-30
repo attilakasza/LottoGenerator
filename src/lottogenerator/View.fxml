@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
@@ -15,7 +16,11 @@
       <Pane id="basePane" fx:id="basePane" prefHeight="406.0" prefWidth="500.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#515050" height="415.0" layoutX="-5.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
-            <ImageView id="imageView" fx:id="imageView" fitHeight="406.0" fitWidth="448.0" layoutX="-86.0" layoutY="59.0" opacity="0.51" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#393737" height="179.0" layoutX="-4.0" stroke="#393737" strokeType="INSIDE" width="510.0" />
+            <ImageView id="imageView" fx:id="imageView" fitHeight="406.0" fitWidth="448.0" layoutX="-87.0" layoutY="59.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/lottery.png" />
+               </image></ImageView>
             <Text fill="WHITE" layoutX="86.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Írj be 5 számot 1 és 90 között!" visible="false">
                <font>
                   <Font name="System Bold" size="24.0" />
@@ -25,7 +30,7 @@
                   <Font name="System Bold" size="32.0" />
                </font>
             </Text>
-              <Button fx:id="button" blendMode="COLOR_DODGE" layoutX="341.0" layoutY="298.0" onAction="#handleButtonAction" text="Sorsolás!" textFill="#6f6a6a">
+              <Button fx:id="button" blendMode="RED" layoutX="341.0" layoutY="298.0" onAction="#handleButtonAction" text="Sorsolás!" textFill="#6f6a6a">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font></Button>
@@ -41,7 +46,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
             </HBox>
-            <HBox layoutX="321.0" layoutY="224.0" prefHeight="37.0" spacing="10.0">
+            <HBox layoutX="321.0" layoutY="226.0" prefHeight="37.0" spacing="10.0">
                <children>
                   <Label id="label1" fx:id="label1" graphicTextGap="5.0" layoutX="36.0" layoutY="129.0" textFill="#b2b1b1">
                      <font>
@@ -73,11 +78,15 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Text id="numbers" fx:id="numbers" fill="WHITE" layoutX="285.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorsolt számok:" textAlignment="CENTER" visible="false" wrappingWidth="200.0">
+            <Text id="numbers" fx:id="numbers" fill="WHITE" layoutX="285.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorsolt számok:" textAlignment="CENTER" visible="false" wrappingWidth="200.0">
                <font>
                   <Font name="Berlin Sans FB" size="19.0" />
                </font>
             </Text>
+            <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="468.0" layoutY="15.0" onMouseClicked="#handleExit" opacity="0.52" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/close.png" />
+               </image></ImageView>
          </children>
       </Pane>
       <Pane id="alertPane" fx:id="alertPane" prefHeight="306.0" prefWidth="400.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
