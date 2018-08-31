@@ -112,7 +112,7 @@ public class ViewController implements Initializable {
             selNumber4 = Integer.parseInt(input4.getText());
             selNumber5 = Integer.parseInt(input5.getText());
         } catch (Exception e) {
-            alert("Nem jó számot adtál meg!");
+            alert("Wrong number, please try again!");
             return;
         }
 
@@ -124,7 +124,7 @@ public class ViewController implements Initializable {
         selectedNumbers.add(selNumber4);
         selectedNumbers.add(selNumber5);
         if (selectedNumbers.size() < 5) {
-            alert("A számoknak különbözőnek kell lenniük!");
+            alert("The numbers must be different!");
             return;
         }
 
@@ -133,7 +133,7 @@ public class ViewController implements Initializable {
         //Are they between 1-99? 
         for (Integer number : userNumbers) {
             if (number < MIN || number > MAX) {
-                alert("Minden számnak 1 és 99 között kell lennie!");
+                alert("The numbers must be between 1 and 99!");
                 return;
             }
         }
@@ -151,22 +151,22 @@ public class ViewController implements Initializable {
         
         switch (result) {
             case 0:
-                resultLabel.setText("Sajnos nem nyertél semmit.");
+                resultLabel.setText("Sorry, no match");
                 break;
             case 1:
-                resultLabel.setText("Egyesed van a lottón.");
+                resultLabel.setText("One matching number");
                 break;
             case 2:
-                resultLabel.setText("Kettesed van a lottón.");
+                resultLabel.setText("Two matching numbers");
                 break;
             case 3:
-                resultLabel.setText("Hármasod van a lottón.");
+                resultLabel.setText("Three matching numbers");
                 break;
             case 4:
-                resultLabel.setText("Négyesed van a lottón.");
+                resultLabel.setText("Four matching numbers");
                 break;
             case 5:
-                resultLabel.setText("ÖTÖSÖD VAN! Gratulálok!");
+                resultLabel.setText("Congratulations, you've won!");
                 break;
         }
     }
