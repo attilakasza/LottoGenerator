@@ -1,5 +1,6 @@
 package lottogenerator;
 
+import java.io.File;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ public class LottoGenerator extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
-        
+         
         //make it movable
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -38,6 +39,11 @@ public class LottoGenerator extends Application {
         
         Scene scene = new Scene(root);
         
+        //load CSS 
+        File f = new File("resources/style.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+            
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

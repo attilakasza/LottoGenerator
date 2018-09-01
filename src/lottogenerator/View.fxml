@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
@@ -21,15 +22,21 @@
                <image>
                   <Image url="@../icons/lottery.png" />
                </image></ImageView>
-            <Text fill="WHITE" layoutX="201.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOTTERY">
+            <Text fill="WHITE" layoutX="216.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOTTO">
                <font>
-                  <Font name="Calibri Bold" size="35.0" />
+                  <Font name="Calibri Bold" size="32.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Text>
-              <Button fx:id="button" blendMode="RED" layoutX="354.0" layoutY="298.0" onAction="#handleButtonAction" text="Start" textFill="#6f6a6a">
+              <Button id="startButton" fx:id="startButton" blendMode="RED" layoutX="354.0" layoutY="298.0" onAction="#handleButtonAction" text="Start" textFill="#6f6a6a">
                <font>
                   <Font name="Calibri Bold" size="22.0" />
-               </font></Button>
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
             <HBox layoutX="44.0" layoutY="110.0" spacing="40.0">
                <children>
                   <TextField id="input1" fx:id="input1" alignment="CENTER" layoutX="73.0" layoutY="75.0" prefHeight="35.0" prefWidth="50.0" />
@@ -79,7 +86,7 @@
                   <Font name="Calibri Bold" size="19.0" />
                </font>
             </Text>
-            <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="468.0" layoutY="15.0" onMouseClicked="#handleExit" opacity="0.52" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="13.0" fitWidth="13.0" layoutX="475.0" layoutY="13.0" onMouseClicked="#handleExit" opacity="0.52" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/close.png" />
                </image></ImageView>
@@ -89,9 +96,9 @@
          <children>
             <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#515050" height="123.0" layoutX="150.0" layoutY="150.0" stroke="#656565" strokeType="INSIDE" width="200.0" />
             <Label id="alertText" fx:id="alertText" alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="160.0" prefHeight="76.0" prefWidth="175.0" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Button id="alertButton" fx:id="alertButton" blendMode="EXCLUSION" layoutX="234.0" layoutY="231.0" onAction="#handleAlertButton" text="OK" textFill="#6f6a6a">
+            <Button id="alertButton" fx:id="alertButton" layoutX="233.0" layoutY="231.0" onAction="#handleAlertButton" text="OK">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Calibri Bold" size="13.0" />
                </font></Button>
          </children>
       </Pane>
