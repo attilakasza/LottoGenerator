@@ -25,6 +25,9 @@ public class LottoGenerator extends Application {
         //set icon
         stage.getIcons().add(new Image("/icons/launcher.png"));
         
+        //set icon
+        stage.setTitle("Lotto");
+        
         //make it movable
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
